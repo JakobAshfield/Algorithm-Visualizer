@@ -1,35 +1,24 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import SortingPage from './pages/SortingPage.jsx'
+// import PathfindingPage, SearchingPage, DataStructuresPage later
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [page, setPage] = useState('sorting') // default page
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      {/* Simple navigation */}
+      <nav style={{ marginBottom: '1rem' }}>
+        <button onClick={() => setPage('sorting')}>Sorting</button>
+        <button onClick={() => setPage('pathfinding')}>Pathfinding</button>
+        <button onClick={() => setPage('searching')}>Searching</button>
+        <button onClick={() => setPage('datastructures')}>Data Structures</button>
+      </nav>
+
+      <main>
+        {page === 'sorting' && <SortingPage />}
+        {/* Add other pages when ready */}
+      </main>
+    </div>
   )
 }
-
-export default App
